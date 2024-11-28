@@ -41,9 +41,9 @@ jobs:
       - name: Deploy to Production
         uses: appleboy/ssh-action@v0.1.5
         with:
-          host: ${{ 13.232.180.161 }}
-          username: ${{ ubuntu }}
-          key: ${{ CICDDJANGO }}
+          host: ${{ secrets.SERVER_IP }} # Replace with your server's IP in GitHub Secrets
+          username: ${{ secrets.SSH_USER }} # Replace with your SSH username in GitHub Secrets
+          key: ${{ secrets.CICDDJANGO }} # SSH private key stored in GitHub Secrets
           script: |
             cd /home/ubuntu/Tests/Production
             git pull origin main
